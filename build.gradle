@@ -6,6 +6,7 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.4.RELEASE")
         classpath("org.springframework.build.gradle:propdeps-plugin:0.0.7")
+        classpath("org.springframework:springloaded:1.2.3.RELEASE")
     }
 }
 
@@ -18,7 +19,7 @@ apply plugin: 'propdeps-idea'
 apply plugin: 'propdeps-eclipse'
 
 jar {
-    baseName = 'hajiboot-jdbc'
+    baseName = 'hajiboot-rest'
     version =  '1.0.0-SNAPSHOT'
 }
 
@@ -30,9 +31,11 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile("com.h2database:h2")
     provided("org.projectlombok:lombok:1.16.4")
+    compile("org.lazyluke:log4jdbc-remix:0.2.7")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
